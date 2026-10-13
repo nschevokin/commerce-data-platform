@@ -1,0 +1,22 @@
+{
+  "created": true,
+  "dataset_sha256": "bc76c894b3e9c87ca81767e8d3d7d99cc8761cbaa0e734c2338c8130a5967de7",
+  "descriptor_sha256": "3d75bed439aa7c46097ce7674402c881383093a0868f862cf303d1e0aaf7eebe",
+  "descriptor_uri": "replays/dataset=bc76c894b3e9c87ca81767e8d3d7d99cc8761cbaa0e734c2338c8130a5967de7/replay=baseline-v1/replay.json",
+  "intervals": 31,
+  "report": {
+    "orders": 99441,
+    "orders_without_customer": 0,
+    "orphans_excluded": {}
+  },
+  "rows_by_source": {
+    "category_translation": 71,
+    "customers": 99441,
+    "order_items": 112650,
+    "order_payments": 103886,
+    "orders": 99441,
+    "products": 32951,
+    "sellers": 3095
+  },
+  "total_rows": 451535
+}

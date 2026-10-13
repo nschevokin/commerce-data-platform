@@ -1,0 +1,142 @@
+{
+  "checks": {
+    "order_items": {
+      "malformed_freight": 0,
+      "malformed_price": 0,
+      "negative_freight": 0,
+      "negative_price": 0
+    },
+    "order_payments": {
+      "installments_max": 24,
+      "installments_min": 0,
+      "installments_nonpositive": 2,
+      "malformed_payment_value": 0,
+      "negative_payment_value": 0,
+      "type_histogram": {
+        "boleto": 19784,
+        "credit_card": 76795,
+        "debit_card": 1529,
+        "not_defined": 3,
+        "voucher": 5775
+      },
+      "zero_payment_value": 9
+    },
+    "orders": {
+      "delivered_status_missing_actual_date": 8,
+      "delivered_status_with_actual_date": 96470,
+      "delivered_with_negative_lead_time": 0,
+      "malformed_purchase_timestamps": 0,
+      "non_delivered_status_with_actual_date": 6,
+      "purchase_max": "2018-10-17 17:30:18",
+      "purchase_min": "2016-09-04 21:15:19",
+      "status_histogram": {
+        "approved": 2,
+        "canceled": 625,
+        "created": 5,
+        "delivered": 96478,
+        "invoiced": 314,
+        "processing": 301,
+        "shipped": 1107,
+        "unavailable": 609
+      },
+      "statuses_outside_contract_v1": []
+    },
+    "payment_vs_items": {
+      "eligible_orders_with_gap": 574,
+      "largest_abs_gap_brl": "182.81",
+      "orders_with_both_sides": 98665,
+      "orders_with_gap": 576
+    },
+    "relationships": {
+      "categories_without_translation": [
+        "pc_gamer",
+        "portateis_cozinha_e_preparadores_de_alimentos"
+      ],
+      "customers_shared_by_orders": 0,
+      "customers_without_order": 0,
+      "distinct_customer_unique_ids": 96096,
+      "items_without_order": 0,
+      "items_without_product": 0,
+      "items_without_seller": 0,
+      "orders_without_customer": 0,
+      "orders_without_items": 775,
+      "orders_without_payments": 1,
+      "payments_without_order": 0,
+      "products_with_blank_category": 610
+    }
+  },
+  "dataset_sha256": "bc76c894b3e9c87ca81767e8d3d7d99cc8761cbaa0e734c2338c8130a5967de7",
+  "profile_version": 1,
+  "serializer_version": "canon-v1",
+  "sources": {
+    "category_translation": {
+      "null_counts": {
+        "product_category_name": 0,
+        "product_category_name_english": 0
+      },
+      "row_count": 71
+    },
+    "customers": {
+      "null_counts": {
+        "customer_city": 0,
+        "customer_id": 0,
+        "customer_state": 0,
+        "customer_unique_id": 0,
+        "customer_zip_code_prefix": 0
+      },
+      "row_count": 99441
+    },
+    "order_items": {
+      "null_counts": {
+        "freight_value": 0,
+        "order_id": 0,
+        "order_item_id": 0,
+        "price": 0,
+        "product_id": 0,
+        "seller_id": 0,
+        "shipping_limit_date": 0
+      },
+      "row_count": 112650
+    },
+    "order_payments": {
+      "null_counts": {
+        "order_id": 0,
+        "payment_installments": 0,
+        "payment_sequential": 0,
+        "payment_type": 0,
+        "payment_value": 0
+      },
+      "row_count": 103886
+    },
+    "orders": {
+      "null_counts": {
+        "customer_id": 0,
+        "order_approved_at": 160,
+        "order_delivered_carrier_date": 1783,
+        "order_delivered_customer_date": 2965,
+        "order_estimated_delivery_date": 0,
+        "order_id": 0,
+        "order_purchase_timestamp": 0,
+        "order_status": 0
+      },
+      "row_count": 99441
+    },
+    "products": {
+      "null_counts": {
+        "product_category_name": 610,
+        "product_id": 0,
+        "product_weight_g": 2
+      },
+      "row_count": 32951
+    },
+    "sellers": {
+      "null_counts": {
+        "seller_city": 0,
+        "seller_id": 0,
+        "seller_state": 0,
+        "seller_zip_code_prefix": 0
+      },
+      "row_count": 3095
+    }
+  }
+}

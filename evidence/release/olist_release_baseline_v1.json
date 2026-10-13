@@ -1,0 +1,90 @@
+{
+  "dashboard_view": {
+    "release": {
+      "code_sha": "2a969b696ce44173233c69ba93c67e2d97c7aa2b-dirty-132573dbfb71",
+      "frontier_end": "2026-02-01 00:00:00+00:00",
+      "generation": 1,
+      "published_at": "2026-10-11 23:00:02.123397+00:00",
+      "release_id": "3454c526-8579-476a-af08-52cd62feb7b3",
+      "replay_version": "baseline-v1",
+      "serving_contract_version": 1,
+      "status": "PUBLISHED"
+    },
+    "rows": {
+      "category_daily": 18943,
+      "delivery_cohorts": 556,
+      "pipeline_health": 7,
+      "sales_daily": 634
+    }
+  },
+  "first_release": {
+    "candidate_schema": "cand_f7e82fd4510e484ebbe26edc315e2c6d",
+    "checks": [
+      {
+        "check": "dbt_build_complete",
+        "observed": "78",
+        "passed": true,
+        "severity": "BLOCK"
+      },
+      {
+        "check": "serving_contract",
+        "observed": "0",
+        "passed": true,
+        "severity": "BLOCK"
+      },
+      {
+        "check": "fct_orders_one_row_per_source_order",
+        "observed": "99441",
+        "passed": true,
+        "severity": "BLOCK"
+      },
+      {
+        "check": "bronze_rows_accounted",
+        "observed": "0",
+        "passed": true,
+        "severity": "BLOCK"
+      },
+      {
+        "check": "sales_merchandise_reconciles",
+        "observed": "13494400.74",
+        "passed": true,
+        "severity": "BLOCK"
+      },
+      {
+        "check": "payments_reconcile",
+        "observed": "16008872.12",
+        "passed": true,
+        "severity": "BLOCK"
+      },
+      {
+        "check": "payment_gap_exceptions",
+        "observed": "576",
+        "passed": false,
+        "severity": "WARN"
+      },
+      {
+        "check": "unmapped_categories",
+        "observed": "623",
+        "passed": false,
+        "severity": "WARN"
+      },
+      {
+        "check": "negative_delivery_durations",
+        "observed": "0",
+        "passed": true,
+        "severity": "WARN"
+      }
+    ],
+    "detail": "",
+    "frontier_end": "2026-02-01T00:00:00Z",
+    "release_id": "3454c526-8579-476a-af08-52cd62feb7b3",
+    "run_id": "ec2273cd-c06a-4f52-a936-66a02bb7458e",
+    "serving_generation": 1,
+    "status": "SUCCEEDED"
+  },
+  "rerun": {
+    "detail": "same input digest as the serving release",
+    "status": "NO_CHANGE"
+  },
+  "what": "T06 release of the real Olist archive (baseline-v1, final frontier) into a local PostgreSQL 16, then a rerun (NO_CHANGE) and a dashboard-role read. Local sandbox run, not a benchmark."
+}

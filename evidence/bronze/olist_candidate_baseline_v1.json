@@ -1,0 +1,65 @@
+{
+ "build": {
+  "dbt": {
+   "executed": 76,
+   "expected": 76,
+   "failures": [],
+   "ok": true,
+   "warnings": [
+    "test.commerce.assert_payment_gap_policy: 576 failing rows (warn)",
+    "test.commerce.warn_unmapped_product_categories: 623 failing rows (warn)"
+   ]
+  },
+  "frontier_end": "2026-02-01T00:00:00Z",
+  "input_digest": "1f12d89ea476006fe2053dcba19c5231a632225f48c2a9e1b09d096d62ecbeee",
+  "intervals": 31,
+  "summary": {
+   "delivery": {
+    "delivered_orders": 96478,
+    "delivered_with_both_dates": 96470,
+    "on_time_orders": 89936
+   },
+   "eligible": {
+    "average_order_value_brl": "137.42",
+    "eligible_orders": 98207,
+    "eligible_orders_with_items": 98199,
+    "excluded_orders": 1234,
+    "first_purchase_date": "2016-09-04",
+    "freight_value_brl": "2241126.29",
+    "last_purchase_date": "2018-10-17",
+    "merchandise_value_brl": "13494400.74",
+    "recorded_payment_brl": "15739137.01"
+   },
+   "row_counts": {
+    "dim_customers": 99441,
+    "dim_products": 32951,
+    "dim_sellers": 3095,
+    "fct_order_items": 112650,
+    "fct_orders": 99441,
+    "fct_payments": 103886,
+    "mart_sales_daily": 634,
+    "stg_customers": 99441,
+    "stg_order_items": 112650,
+    "stg_order_payments": 103886,
+    "stg_orders": 99441,
+    "stg_products": 32951,
+    "stg_sellers": 3095
+   }
+  }
+ },
+ "crosscheck": {
+  "compared": {
+   "categories": 74,
+   "orders": 99441,
+   "sales_days": 634
+  },
+  "difference_count": 0,
+  "differences": []
+ },
+ "dbt_build_wall_seconds": {
+  "first_run_89_nodes": 28.3,
+  "rerun_76_nodes_after_test_consolidation": 17.3
+ },
+ "environment": "sandbox, PostgreSQL 16.15 native, 2 vCPU; one run, not a benchmark",
+ "what": "T05: full Olist baseline-v1 through bronze -> latest-revision -> dbt candidate, compared with an independent Python Decimal reference computed from the original CSVs"
+}

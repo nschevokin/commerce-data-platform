@@ -1,0 +1,170 @@
+{
+  "candidate_schema": "cand_a2b85b4fa1da48b3a47b54a9c15aaad2",
+  "dbt": {
+    "executed": 68,
+    "expected": 68,
+    "failures": [],
+    "warnings": [
+      "test.commerce.warn_unmapped_product_categories: 2 failing rows (warn)"
+    ]
+  },
+  "fixture": "golden_v1",
+  "observed": {
+    "all_status": {
+      "freight_value_brl": "15.00",
+      "merchandise_value_brl": "150.00",
+      "orders": 3,
+      "recorded_payment_brl": "165.00"
+    },
+    "category": {
+      "(unknown)": {
+        "distinct_orders": 1,
+        "freight_value_brl": "3.00",
+        "item_rows": 1,
+        "mapping_missing": true,
+        "merchandise_value_brl": "30.00"
+      },
+      "health_beauty": {
+        "distinct_orders": 1,
+        "freight_value_brl": "5.00",
+        "item_rows": 1,
+        "mapping_missing": false,
+        "merchandise_value_brl": "60.00"
+      },
+      "pc_gamer": {
+        "distinct_orders": 1,
+        "freight_value_brl": "5.00",
+        "item_rows": 1,
+        "mapping_missing": true,
+        "merchandise_value_brl": "40.00"
+      }
+    },
+    "delivery": {
+      "delivered_orders": 2,
+      "delivered_with_both_dates": 2,
+      "on_time_orders": 1,
+      "on_time_rate": "0.500000"
+    },
+    "dimensions": {
+      "customer_postal_prefix": {
+        "fx00000000000000000000000000cust_a": "01310"
+      },
+      "distinct_customer_unique_ids": 2,
+      "seller_postal_prefix": {
+        "fx0000000000000000000000000seller_2": "04567"
+      },
+      "seller_state": {
+        "fx0000000000000000000000000seller_2": "SP"
+      }
+    },
+    "eligible": {
+      "average_order_value_brl": "65.00",
+      "eligible_orders": 2,
+      "eligible_orders_with_items": 2,
+      "excluded_orders": 1,
+      "freight_value_brl": "13.00",
+      "merchandise_value_brl": "130.00",
+      "recorded_payment_brl": "143.00"
+    },
+    "orders": {
+      "fx0000000000000000000000000order_a": {
+        "delivery_lead_time_seconds": 589200,
+        "freight_value_brl": "10.00",
+        "has_customer": true,
+        "has_delivery_actual": true,
+        "has_delivery_estimate": true,
+        "has_items": true,
+        "has_payments": true,
+        "is_eligible": true,
+        "is_on_time": true,
+        "item_count": 2,
+        "item_total_brl": "110.00",
+        "merchandise_value_brl": "100.00",
+        "payment_difference_brl": "0.00",
+        "payment_row_count": 2,
+        "purchase_date": "2017-03-10",
+        "recorded_payment_brl": "110.00",
+        "status": "delivered"
+      },
+      "fx0000000000000000000000000order_b": {
+        "delivery_lead_time_seconds": 1666500,
+        "freight_value_brl": "3.00",
+        "has_customer": true,
+        "has_delivery_actual": true,
+        "has_delivery_estimate": true,
+        "has_items": true,
+        "has_payments": true,
+        "is_eligible": true,
+        "is_on_time": false,
+        "item_count": 1,
+        "item_total_brl": "33.00",
+        "merchandise_value_brl": "30.00",
+        "payment_difference_brl": "0.00",
+        "payment_row_count": 1,
+        "purchase_date": "2017-03-11",
+        "recorded_payment_brl": "33.00",
+        "status": "delivered"
+      },
+      "fx0000000000000000000000000order_c": {
+        "delivery_lead_time_seconds": null,
+        "freight_value_brl": "2.00",
+        "has_customer": true,
+        "has_delivery_actual": false,
+        "has_delivery_estimate": true,
+        "has_items": true,
+        "has_payments": true,
+        "is_eligible": false,
+        "is_on_time": null,
+        "item_count": 1,
+        "item_total_brl": "22.00",
+        "merchandise_value_brl": "20.00",
+        "payment_difference_brl": "0.00",
+        "payment_row_count": 1,
+        "purchase_date": "2017-03-11",
+        "recorded_payment_brl": "22.00",
+        "status": "canceled"
+      }
+    },
+    "row_counts": {
+      "category_translation": 2,
+      "customers": 3,
+      "order_items": 4,
+      "order_payments": 4,
+      "orders": 3,
+      "products": 3,
+      "sellers": 2
+    },
+    "sales_daily": {
+      "2017-03-10": {
+        "average_order_value_brl": "100.00",
+        "eligible_orders": 1,
+        "excluded_orders": 0,
+        "freight_value_brl": "10.00",
+        "merchandise_value_brl": "100.00",
+        "recorded_payment_brl": "110.00"
+      },
+      "2017-03-11": {
+        "average_order_value_brl": "30.00",
+        "eligible_orders": 1,
+        "excluded_orders": 1,
+        "freight_value_brl": "3.00",
+        "merchandise_value_brl": "30.00",
+        "recorded_payment_brl": "33.00"
+      }
+    }
+  },
+  "passed": true,
+  "python_reference_vs_oracle_diffs": [],
+  "recorded_at": "2026-10-11T20:53:08+00:00",
+  "run_id": "2ab9ff27-4c97-480f-a43f-79139d626356",
+  "source_rows_loaded": {
+    "category_translation": 2,
+    "customers": 3,
+    "order_items": 4,
+    "order_payments": 4,
+    "orders": 3,
+    "products": 3,
+    "sellers": 2
+  },
+  "sql_vs_oracle_diffs": []
+}

@@ -1,0 +1,978 @@
+{
+  "cases": [
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "error_code": "UNEXPECTED",
+          "run": "a7c528e3",
+          "source": "category_translation",
+          "stage": "ingest_source",
+          "status": "FAILED"
+        },
+        {
+          "attempt": 1,
+          "error_code": "PIPELINE_FAILED",
+          "run": "a7c528e3",
+          "source": "",
+          "stage": "pipeline_result",
+          "status": "FAILED"
+        },
+        {
+          "attempt": 2,
+          "error_code": null,
+          "run": "a7c528e3",
+          "source": "",
+          "stage": "resolve_run",
+          "status": "SUCCEEDED"
+        },
+        {
+          "attempt": 2,
+          "error_code": null,
+          "run": "a7c528e3",
+          "source": "",
+          "stage": "claim_writer",
+          "status": "SUCCEEDED"
+        },
+        {
+          "attempt": 2,
+          "error_code": null,
+          "run": "a7c528e3",
+          "source": "",
+          "stage": "resolve_manifest",
+          "status": "SUCCEEDED"
+        },
+        {
+          "attempt": 2,
+          "error_code": null,
+          "run": "a7c528e3",
+          "source": "",
+          "stage": "verify_manifest",
+          "status": "SUCCEEDED"
+        },
+        {
+          "attempt": 2,
+          "error_code": null,
+          "run": "a7c528e3",
+          "source": "category_translation",
+          "stage": "ingest_source",
+          "status": "SUCCEEDED"
+        },
+        {
+          "attempt": 2,
+          "error_code": null,
+          "run": "a7c528e3",
+          "source": "customers",
+          "stage": "ingest_source",
+          "status": "SUCCEEDED"
+        },
+        {
+          "attempt": 2,
+          "error_code": null,
+          "run": "a7c528e3",
+          "source": "order_items",
+          "stage": "ingest_source",
+          "status": "SUCCEEDED"
+        },
+        {
+          "attempt": 2,
+          "error_code": null,
+          "run": "a7c528e3",
+          "source": "order_payments",
+          "stage": "ingest_source",
+          "status": "SUCCEEDED"
+        },
+        {
+          "attempt": 2,
+          "error_code": null,
+          "run": "a7c528e3",
+          "source": "orders",
+          "stage": "ingest_source",
+          "status": "SUCCEEDED"
+        },
+        {
+          "attempt": 2,
+          "error_code": null,
+          "run": "a7c528e3",
+          "source": "products",
+          "stage": "ingest_source",
+          "status": "SUCCEEDED"
+        },
+        {
+          "attempt": 2,
+          "error_code": null,
+          "run": "a7c528e3",
+          "source": "sellers",
+          "stage": "ingest_source",
+          "status": "SUCCEEDED"
+        },
+        {
+          "attempt": 2,
+          "error_code": null,
+          "run": "a7c528e3",
+          "source": "",
+          "stage": "pipeline_result",
+          "status": "SUCCEEDED"
+        }
+      ],
+      "case": "C01",
+      "checks": {
+        "each_event_once": true,
+        "first_run_failed": true,
+        "killed_transaction_left_no_rows": true,
+        "retry_succeeds": true
+      },
+      "error": null,
+      "expectation": "Kill loader before commit: transaction rolls back, no receipt, retry inserts each event once",
+      "generation_after": 2,
+      "generation_before": 1,
+      "injected": "ingest_file raises before_commit once (process killed inside the file transaction)",
+      "observations": {
+        "after_kill": {
+          "no_partial_commit": true,
+          "serving": [
+            "9331e8d7-5f7e-41e2-9104-4cbb2016f77c",
+            1
+          ],
+          "status": "FAILED_TRANSIENT"
+        },
+        "after_retry": "SUCCEEDED",
+        "events_unique": true
+      },
+      "outcome": "PASS",
+      "recovery": "rerun the same orchestrator run: receipts skip finished files, the killed file is re-read",
+      "release_after": "162c160e-7dc4-4879-8794-b73bfac9e23e",
+      "release_before": "9331e8d7-5f7e-41e2-9104-4cbb2016f77c",
+      "seconds": 9.5
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "error_code": "UNEXPECTED",
+          "run": "4c948d26",
+          "source": "category_translation",
+          "stage": "ingest_source",
+          "status": "FAILED"
+        },
+        {
+          "attempt": 1,
+          "error_code": "PIPELINE_FAILED",
+          "run": "4c948d26",
+          "source": "",
+          "stage": "pipeline_result",
+          "status": "FAILED"
+        },
+        {
+          "attempt": 2,
+          "error_code": null,
+          "run": "4c948d26",
+          "source": "",
+          "stage": "resolve_run",
+          "status": "SUCCEEDED"
+        },
+        {
+          "attempt": 2,
+          "error_code": null,
+          "run": "4c948d26",
+          "source": "",
+          "stage": "claim_writer",
+          "status": "SUCCEEDED"
+        },
+        {
+          "attempt": 2,
+          "error_code": null,
+          "run": "4c948d26",
+          "source": "",
+          "stage": "resolve_manifest",
+          "status": "SUCCEEDED"
+        },
+        {
+          "attempt": 2,
+          "error_code": null,
+          "run": "4c948d26",
+          "source": "",
+          "stage": "verify_manifest",
+          "status": "SUCCEEDED"
+        },
+        {
+          "attempt": 2,
+          "error_code": null,
+          "run": "4c948d26",
+          "source": "customers",
+          "stage": "ingest_source",
+          "status": "SUCCEEDED"
+        },
+        {
+          "attempt": 2,
+          "error_code": null,
+          "run": "4c948d26",
+          "source": "category_translation",
+          "stage": "ingest_source",
+          "status": "SUCCEEDED"
+        },
+        {
+          "attempt": 2,
+          "error_code": null,
+          "run": "4c948d26",
+          "source": "order_items",
+          "stage": "ingest_source",
+          "status": "SUCCEEDED"
+        },
+        {
+          "attempt": 2,
+          "error_code": null,
+          "run": "4c948d26",
+          "source": "order_payments",
+          "stage": "ingest_source",
+          "status": "SUCCEEDED"
+        },
+        {
+          "attempt": 2,
+          "error_code": null,
+          "run": "4c948d26",
+          "source": "orders",
+          "stage": "ingest_source",
+          "status": "SUCCEEDED"
+        },
+        {
+          "attempt": 2,
+          "error_code": null,
+          "run": "4c948d26",
+          "source": "products",
+          "stage": "ingest_source",
+          "status": "SUCCEEDED"
+        },
+        {
+          "attempt": 2,
+          "error_code": null,
+          "run": "4c948d26",
+          "source": "sellers",
+          "stage": "ingest_source",
+          "status": "SUCCEEDED"
+        },
+        {
+          "attempt": 2,
+          "error_code": null,
+          "run": "4c948d26",
+          "source": "",
+          "stage": "pipeline_result",
+          "status": "SUCCEEDED"
+        }
+      ],
+      "case": "C02",
+      "checks": {
+        "committed_file_has_its_receipt": true,
+        "first_run_failed": true,
+        "one_receipt_per_file": true,
+        "retry_succeeds": true
+      },
+      "error": null,
+      "expectation": "Drop connection after commit: retry recognises the receipt, one receipt, unchanged events",
+      "generation_after": 3,
+      "generation_before": 2,
+      "injected": "ingest_file raises after the commit (client loses the acknowledgement)",
+      "observations": {
+        "after_fault": {
+          "no_partial_commit": true,
+          "status": "FAILED_TRANSIENT"
+        },
+        "receipts_after_fault": 141,
+        "receipts_after_retry": 147
+      },
+      "outcome": "PASS",
+      "recovery": "rerun: the receipt is recognised and validated, no second insert",
+      "release_after": "ff3825b8-4226-4119-b25d-098f2f6a9569",
+      "release_before": "162c160e-7dc4-4879-8794-b73bfac9e23e",
+      "seconds": 9.6
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "error_code": null,
+          "run": "0a0636c4",
+          "source": "",
+          "stage": "publish_release",
+          "status": "SKIPPED"
+        },
+        {
+          "attempt": 1,
+          "error_code": null,
+          "run": "0a0636c4",
+          "source": "",
+          "stage": "verify_serving",
+          "status": "SKIPPED"
+        },
+        {
+          "attempt": 1,
+          "error_code": null,
+          "run": "c6700c11",
+          "source": "",
+          "stage": "publish_release",
+          "status": "SKIPPED"
+        },
+        {
+          "attempt": 1,
+          "error_code": null,
+          "run": "c6700c11",
+          "source": "",
+          "stage": "verify_serving",
+          "status": "SKIPPED"
+        }
+      ],
+      "case": "C03",
+      "checks": {
+        "both_audit_runs_ok": true,
+        "business_checksums_equal_at_same_frontier": true,
+        "duplicates_were_detected_and_counted": true
+      },
+      "error": null,
+      "expectation": "Deliver the same file twice: exact redelivery is a no-op, duplicate count rises, checksum equal",
+      "generation_after": 3,
+      "generation_before": 3,
+      "injected": "the redelivery replay re-sends complete order bundles three days later",
+      "observations": {
+        "differences": [],
+        "exact_duplicate_rows_counted": "6"
+      },
+      "outcome": "PASS",
+      "recovery": "none needed: exact redelivery is a no-op for the business answer",
+      "release_after": "ff3825b8-4226-4119-b25d-098f2f6a9569",
+      "release_before": "ff3825b8-4226-4119-b25d-098f2f6a9569",
+      "seconds": 18.9
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "error_code": "DATA_INVALID",
+          "run": "3e335b5d",
+          "source": "orders",
+          "stage": "ingest_source",
+          "status": "FAILED"
+        },
+        {
+          "attempt": 1,
+          "error_code": "PIPELINE_FAILED",
+          "run": "3e335b5d",
+          "source": "",
+          "stage": "pipeline_result",
+          "status": "FAILED"
+        }
+      ],
+      "case": "C04",
+      "checks": {
+        "guard_released": true,
+        "nothing_published": true,
+        "run_failed_closed": true,
+        "serving_release_unchanged": true
+      },
+      "error": null,
+      "expectation": "Same event key, altered payload: deterministic contract failure, current release unchanged",
+      "generation_after": 3,
+      "generation_before": 3,
+      "injected": "a second event with the same key and revision but different content, same file",
+      "observations": {
+        "error": "run 3e335b5d-9ac1-58d9-94da-d51962ab30a1 ended FAILED_CONTRACT: ingest_source[orders]: FAILED DATA_INVALID; reconcile_ingestion: no evidence; choose_frontier: no evidence; prepare_candidate: no evidence; build_candidate: no evidence; validate_candidate: no evidence; publish_release: no evidence; ver",
+        "statuses": [
+          "FAILED_CONTRACT"
+        ]
+      },
+      "outcome": "PASS",
+      "recovery": "none by retry (deterministic); the source must be corrected under a new replay identity",
+      "release_after": "ff3825b8-4226-4119-b25d-098f2f6a9569",
+      "release_before": "ff3825b8-4226-4119-b25d-098f2f6a9569",
+      "seconds": 1.0
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "error_code": "CONTRACT",
+          "run": "fc8acfca",
+          "source": "",
+          "stage": "verify_manifest",
+          "status": "FAILED"
+        },
+        {
+          "attempt": 1,
+          "error_code": "PIPELINE_FAILED",
+          "run": "fc8acfca",
+          "source": "",
+          "stage": "pipeline_result",
+          "status": "FAILED"
+        },
+        {
+          "attempt": 2,
+          "error_code": null,
+          "run": "fc8acfca",
+          "source": "",
+          "stage": "resolve_run",
+          "status": "SUCCEEDED"
+        },
+        {
+          "attempt": 2,
+          "error_code": null,
+          "run": "fc8acfca",
+          "source": "",
+          "stage": "claim_writer",
+          "status": "SUCCEEDED"
+        },
+        {
+          "attempt": 2,
+          "error_code": null,
+          "run": "fc8acfca",
+          "source": "",
+          "stage": "resolve_manifest",
+          "status": "SUCCEEDED"
+        },
+        {
+          "attempt": 2,
+          "error_code": null,
+          "run": "fc8acfca",
+          "source": "",
+          "stage": "verify_manifest",
+          "status": "SUCCEEDED"
+        },
+        {
+          "attempt": 2,
+          "error_code": null,
+          "run": "fc8acfca",
+          "source": "",
+          "stage": "pipeline_result",
+          "status": "SUCCEEDED"
+        }
+      ],
+      "case": "C05",
+      "checks": {
+        "no_interval_completed": true,
+        "retry_succeeds_and_publishes": true,
+        "run_failed_before_any_write": true,
+        "serving_release_unchanged": true
+      },
+      "error": null,
+      "expectation": "One source missing from a batch: no complete interval, no publication",
+      "generation_after": 4,
+      "generation_before": 3,
+      "injected": "the stored object of one required source is missing for one interval of the window",
+      "observations": {
+        "after_fault": {
+          "complete_intervals": 35,
+          "serving": [
+            "ff3825b8-4226-4119-b25d-098f2f6a9569",
+            3
+          ],
+          "status": "FAILED_CONTRACT"
+        },
+        "after_retry": "SUCCEEDED"
+      },
+      "outcome": "PASS",
+      "recovery": "restore the object (same bytes, same checksum) and rerun the same run",
+      "release_after": "5a00f857-44eb-40d7-b379-0ba82ce094b1",
+      "release_before": "ff3825b8-4226-4119-b25d-098f2f6a9569",
+      "seconds": 10.0
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "error_code": "QUALITY_FAILED",
+          "run": "2c188d3b",
+          "source": "",
+          "stage": "validate_candidate",
+          "status": "FAILED"
+        },
+        {
+          "attempt": 1,
+          "error_code": "PIPELINE_FAILED",
+          "run": "2c188d3b",
+          "source": "",
+          "stage": "pipeline_result",
+          "status": "FAILED"
+        }
+      ],
+      "case": "C06",
+      "checks": {
+        "blocking_check_recorded": true,
+        "candidate_rejected": true,
+        "dashboard_still_reads_prior_release": true,
+        "serving_release_unchanged": true
+      },
+      "error": null,
+      "expectation": "dbt model or quality test fails: candidate rejected, prior serving schema stays visible",
+      "generation_after": 4,
+      "generation_before": 4,
+      "injected": "an order item whose order never arrives",
+      "observations": {
+        "candidate_status": "REJECTED",
+        "failing_blocking_checks": [
+          "dbt_build_complete",
+          "serving_contract"
+        ],
+        "statuses": [
+          "FAILED_QUALITY"
+        ]
+      },
+      "outcome": "PASS",
+      "recovery": "none by retry; fix the input or the data policy, then publish only when gates pass (RB-03)",
+      "release_after": "5a00f857-44eb-40d7-b379-0ba82ce094b1",
+      "release_before": "5a00f857-44eb-40d7-b379-0ba82ce094b1",
+      "seconds": 8.8
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "error_code": "UNEXPECTED",
+          "run": "bac2f5c5",
+          "source": "",
+          "stage": "publish_release",
+          "status": "FAILED"
+        },
+        {
+          "attempt": 1,
+          "error_code": "PIPELINE_FAILED",
+          "run": "bac2f5c5",
+          "source": "",
+          "stage": "pipeline_result",
+          "status": "FAILED"
+        },
+        {
+          "attempt": 2,
+          "error_code": null,
+          "run": "bac2f5c5",
+          "source": "",
+          "stage": "resolve_run",
+          "status": "SUCCEEDED"
+        },
+        {
+          "attempt": 2,
+          "error_code": null,
+          "run": "bac2f5c5",
+          "source": "",
+          "stage": "claim_writer",
+          "status": "SUCCEEDED"
+        },
+        {
+          "attempt": 2,
+          "error_code": null,
+          "run": "bac2f5c5",
+          "source": "",
+          "stage": "resolve_manifest",
+          "status": "SUCCEEDED"
+        },
+        {
+          "attempt": 2,
+          "error_code": null,
+          "run": "bac2f5c5",
+          "source": "",
+          "stage": "verify_manifest",
+          "status": "SUCCEEDED"
+        },
+        {
+          "attempt": 2,
+          "error_code": null,
+          "run": "bac2f5c5",
+          "source": "category_translation",
+          "stage": "ingest_source",
+          "status": "SUCCEEDED"
+        },
+        {
+          "attempt": 2,
+          "error_code": null,
+          "run": "bac2f5c5",
+          "source": "customers",
+          "stage": "ingest_source",
+          "status": "SUCCEEDED"
+        },
+        {
+          "attempt": 2,
+          "error_code": null,
+          "run": "bac2f5c5",
+          "source": "order_items",
+          "stage": "ingest_source",
+          "status": "SUCCEEDED"
+        },
+        {
+          "attempt": 2,
+          "error_code": null,
+          "run": "bac2f5c5",
+          "source": "order_payments",
+          "stage": "ingest_source",
+          "status": "SUCCEEDED"
+        },
+        {
+          "attempt": 2,
+          "error_code": null,
+          "run": "bac2f5c5",
+          "source": "orders",
+          "stage": "ingest_source",
+          "status": "SUCCEEDED"
+        },
+        {
+          "attempt": 2,
+          "error_code": null,
+          "run": "bac2f5c5",
+          "source": "products",
+          "stage": "ingest_source",
+          "status": "SUCCEEDED"
+        },
+        {
+          "attempt": 2,
+          "error_code": null,
+          "run": "bac2f5c5",
+          "source": "sellers",
+          "stage": "ingest_source",
+          "status": "SUCCEEDED"
+        },
+        {
+          "attempt": 2,
+          "error_code": null,
+          "run": "bac2f5c5",
+          "source": "",
+          "stage": "reconcile_ingestion",
+          "status": "SUCCEEDED"
+        },
+        {
+          "attempt": 2,
+          "error_code": null,
+          "run": "bac2f5c5",
+          "source": "",
+          "stage": "choose_frontier",
+          "status": "SUCCEEDED"
+        },
+        {
+          "attempt": 2,
+          "error_code": null,
+          "run": "bac2f5c5",
+          "source": "",
+          "stage": "prepare_candidate",
+          "status": "SUCCEEDED"
+        },
+        {
+          "attempt": 2,
+          "error_code": null,
+          "run": "bac2f5c5",
+          "source": "",
+          "stage": "build_candidate",
+          "status": "SUCCEEDED"
+        },
+        {
+          "attempt": 2,
+          "error_code": null,
+          "run": "bac2f5c5",
+          "source": "",
+          "stage": "validate_candidate",
+          "status": "SUCCEEDED"
+        },
+        {
+          "attempt": 2,
+          "error_code": null,
+          "run": "bac2f5c5",
+          "source": "",
+          "stage": "publish_release",
+          "status": "SUCCEEDED"
+        },
+        {
+          "attempt": 2,
+          "error_code": null,
+          "run": "bac2f5c5",
+          "source": "",
+          "stage": "pipeline_result",
+          "status": "SUCCEEDED"
+        }
+      ],
+      "case": "C07",
+      "checks": {
+        "all_views_still_prior_release": true,
+        "no_publication_receipt": true,
+        "retry_publishes_without_rebuilding": true,
+        "run_failed": true
+      },
+      "error": null,
+      "expectation": "Interrupt publication before commit: whole transaction rolls back, views still prior release",
+      "generation_after": 5,
+      "generation_before": 4,
+      "injected": "publication transaction aborted after the view swap, before commit",
+      "observations": {
+        "after_fault": {
+          "dashboard_release": "5a00f857-44eb-40d7-b379-0ba82ce094b1",
+          "publications": 4,
+          "serving": [
+            "5a00f857-44eb-40d7-b379-0ba82ce094b1",
+            4
+          ],
+          "status": "FAILED_TRANSIENT"
+        },
+        "after_retry": "SUCCEEDED",
+        "candidate_rows_for_run": 1
+      },
+      "outcome": "PASS",
+      "recovery": "rerun the same run: the validated candidate is reused and published once",
+      "release_after": "16d1f558-c6ba-419a-9430-e7cf74b173d4",
+      "release_before": "5a00f857-44eb-40d7-b379-0ba82ce094b1",
+      "seconds": 9.4
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "error_code": "UNEXPECTED",
+          "run": "42471267",
+          "source": "",
+          "stage": "publish_release",
+          "status": "FAILED"
+        },
+        {
+          "attempt": 1,
+          "error_code": "PIPELINE_FAILED",
+          "run": "42471267",
+          "source": "",
+          "stage": "pipeline_result",
+          "status": "FAILED"
+        },
+        {
+          "attempt": 2,
+          "error_code": null,
+          "run": "42471267",
+          "source": "",
+          "stage": "resolve_run",
+          "status": "SUCCEEDED"
+        },
+        {
+          "attempt": 2,
+          "error_code": null,
+          "run": "42471267",
+          "source": "",
+          "stage": "claim_writer",
+          "status": "SUCCEEDED"
+        },
+        {
+          "attempt": 2,
+          "error_code": null,
+          "run": "42471267",
+          "source": "",
+          "stage": "resolve_manifest",
+          "status": "SUCCEEDED"
+        },
+        {
+          "attempt": 2,
+          "error_code": null,
+          "run": "42471267",
+          "source": "",
+          "stage": "verify_manifest",
+          "status": "SUCCEEDED"
+        },
+        {
+          "attempt": 2,
+          "error_code": null,
+          "run": "42471267",
+          "source": "customers",
+          "stage": "ingest_source",
+          "status": "SUCCEEDED"
+        },
+        {
+          "attempt": 2,
+          "error_code": null,
+          "run": "42471267",
+          "source": "category_translation",
+          "stage": "ingest_source",
+          "status": "SUCCEEDED"
+        },
+        {
+          "attempt": 2,
+          "error_code": null,
+          "run": "42471267",
+          "source": "order_payments",
+          "stage": "ingest_source",
+          "status": "SUCCEEDED"
+        },
+        {
+          "attempt": 2,
+          "error_code": null,
+          "run": "42471267",
+          "source": "order_items",
+          "stage": "ingest_source",
+          "status": "SUCCEEDED"
+        },
+        {
+          "attempt": 2,
+          "error_code": null,
+          "run": "42471267",
+          "source": "orders",
+          "stage": "ingest_source",
+          "status": "SUCCEEDED"
+        },
+        {
+          "attempt": 2,
+          "error_code": null,
+          "run": "42471267",
+          "source": "products",
+          "stage": "ingest_source",
+          "status": "SUCCEEDED"
+        },
+        {
+          "attempt": 2,
+          "error_code": null,
+          "run": "42471267",
+          "source": "sellers",
+          "stage": "ingest_source",
+          "status": "SUCCEEDED"
+        },
+        {
+          "attempt": 2,
+          "error_code": null,
+          "run": "42471267",
+          "source": "",
+          "stage": "reconcile_ingestion",
+          "status": "SUCCEEDED"
+        },
+        {
+          "attempt": 2,
+          "error_code": null,
+          "run": "42471267",
+          "source": "",
+          "stage": "choose_frontier",
+          "status": "SUCCEEDED"
+        },
+        {
+          "attempt": 2,
+          "error_code": null,
+          "run": "42471267",
+          "source": "",
+          "stage": "prepare_candidate",
+          "status": "SKIPPED"
+        },
+        {
+          "attempt": 2,
+          "error_code": null,
+          "run": "42471267",
+          "source": "",
+          "stage": "build_candidate",
+          "status": "SKIPPED"
+        },
+        {
+          "attempt": 2,
+          "error_code": null,
+          "run": "42471267",
+          "source": "",
+          "stage": "validate_candidate",
+          "status": "SKIPPED"
+        },
+        {
+          "attempt": 2,
+          "error_code": null,
+          "run": "42471267",
+          "source": "",
+          "stage": "publish_release",
+          "status": "SKIPPED"
+        },
+        {
+          "attempt": 1,
+          "error_code": null,
+          "run": "42471267",
+          "source": "",
+          "stage": "verify_serving",
+          "status": "SKIPPED"
+        },
+        {
+          "attempt": 2,
+          "error_code": null,
+          "run": "42471267",
+          "source": "",
+          "stage": "pipeline_result",
+          "status": "SUCCEEDED"
+        }
+      ],
+      "case": "C08",
+      "checks": {
+        "commit_survived_the_failed_acknowledgement": true,
+        "exactly_one_publication_for_the_candidate": true,
+        "retry_is_a_no_op": true
+      },
+      "error": null,
+      "expectation": "Lose publication acknowledgement: retry inspects the receipt, exactly one publication",
+      "generation_after": 6,
+      "generation_before": 5,
+      "injected": "the publication commits, then the caller sees a failure",
+      "observations": {
+        "after_fault": {
+          "publications": 6,
+          "serving": [
+            "4808de60-78f8-43c2-96d1-609fdc630f3f",
+            6
+          ],
+          "status": "FAILED_TRANSIENT"
+        },
+        "after_retry": "NO_CHANGE"
+      },
+      "outcome": "PASS",
+      "recovery": "rerun: serving already carries this input digest, so the run ends NO_CHANGE and publishes nothing (a direct re-publish answers ALREADY_COMMITTED; covered in test_publication)",
+      "release_after": "4808de60-78f8-43c2-96d1-609fdc630f3f",
+      "release_before": "16d1f558-c6ba-419a-9430-e7cf74b173d4",
+      "seconds": 9.3
+    },
+    {
+      "attempts": [],
+      "case": "C09",
+      "checks": {
+        "generation_moved": true,
+        "no_data_change": true,
+        "stale_attempt_refused": true
+      },
+      "error": null,
+      "expectation": "Old task attempts write after takeover: fencing generation check rejects them",
+      "generation_after": 6,
+      "generation_before": 6,
+      "injected": "the guard is taken over while an old attempt still holds the previous generation",
+      "observations": {
+        "new_generation": 19,
+        "old_generation": 18
+      },
+      "outcome": "PASS",
+      "recovery": "the old attempt is refused; a new run claims the guard normally",
+      "release_after": "4808de60-78f8-43c2-96d1-609fdc630f3f",
+      "release_before": "4808de60-78f8-43c2-96d1-609fdc630f3f",
+      "seconds": 0.1
+    },
+    {
+      "attempts": [],
+      "case": "C10",
+      "checks": {
+        "next_refresh_sees_the_new_release": true,
+        "publisher_waited_for_the_refresh": true,
+        "refresh_saw_exactly_one_release": true
+      },
+      "error": null,
+      "expectation": "Publish during dashboard refresh: reader sees one coherent release, publisher waits",
+      "generation_after": 7,
+      "generation_before": 6,
+      "injected": "a rollback publication starts while a dashboard refresh is half-way",
+      "observations": {
+        "release_ids_seen_in_one_refresh": [
+          "4808de60-78f8-43c2-96d1-609fdc630f3f"
+        ]
+      },
+      "outcome": "PASS",
+      "recovery": "none: the publisher waits for the open refresh, the next refresh sees the new release",
+      "release_after": "9331e8d7-5f7e-41e2-9104-4cbb2016f77c",
+      "release_before": "4808de60-78f8-43c2-96d1-609fdc630f3f",
+      "seconds": 1.6
+    }
+  ],
+  "environment": {
+    "dataset": "golden fixture (synthetic, 31 replay intervals)",
+    "initial_release": "9331e8d7-5f7e-41e2-9104-4cbb2016f77c",
+    "machine": "x86_64",
+    "platform": "Linux-6.18.44-fc-v114-x86_64-with-glibc2.39",
+    "postgresql": "16.15 (Ubuntu 16.15-0ubuntu0.24.04.1)",
+    "python": "3.12.13",
+    "wall_seconds": 88
+  },
+  "summary": {
+    "passed": 10,
+    "total": 10
+  },
+  "what": "Blueprint \u00a726 fault-injection matrix, run on a throwaway demo database"
+}

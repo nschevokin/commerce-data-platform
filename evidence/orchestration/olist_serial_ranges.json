@@ -1,0 +1,46 @@
+{
+  "final_serving": {
+    "eligible_orders": 98207,
+    "generation": 5,
+    "merchandise_value_brl": "13494400.74",
+    "sales_days": 634
+  },
+  "independent_reference_crosscheck": {
+    "compared": {
+      "categories": 74,
+      "orders": 99441,
+      "sales_days": 634
+    },
+    "difference_count": 0,
+    "differences": []
+  },
+  "runs": [
+    {
+      "intervals": "0-7",
+      "status": "SUCCEEDED"
+    },
+    {
+      "intervals": "7-14",
+      "status": "SUCCEEDED"
+    },
+    {
+      "intervals": "14-21",
+      "status": "SUCCEEDED"
+    },
+    {
+      "intervals": "21-28",
+      "status": "SUCCEEDED"
+    },
+    {
+      "intervals": "28-31",
+      "status": "SUCCEEDED"
+    }
+  ],
+  "stage_results": {
+    "all_runs_succeeded": true,
+    "ingest_source_rows": 35,
+    "runs": 5
+  },
+  "wall_clock_seconds": 131,
+  "what": "T07: the full Olist replay (31 intervals) pushed through the DAG's stage functions in 5 serial runs of at most 7 intervals (`commerce pipeline run`), empty database, local PostgreSQL 16 in a 2 vCPU sandbox. Each run ingests, builds a candidate with dbt, validates and publishes. Single labelled run, not a benchmark."
+}

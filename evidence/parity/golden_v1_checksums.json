@@ -1,0 +1,33 @@
+{
+  "canonical_rows": {
+    "dim_customers": 3,
+    "dim_date": 2,
+    "dim_products": 3,
+    "dim_sellers": 2,
+    "fct_order_items": 4,
+    "fct_orders": 3,
+    "fct_payments": 4,
+    "mart_category_daily": 3,
+    "mart_delivery_cohorts": 1,
+    "mart_pipeline_health": 7,
+    "mart_sales_daily": 2
+  },
+  "canonical_sha256": "37e28ebd61b1a6445b788d6ecc9ff7262f6edd70aefca5f34637cf3fd5961d08",
+  "dataset_sha256": "0ea7c4e576668925f8e500342856709c3af757cfc4183eeb128620d4091da7b6",
+  "environment": {
+    "executable": "linux",
+    "machine": "x86_64",
+    "platform": "Linux-6.18.44-fc-v114-x86_64-with-glibc2.39",
+    "postgresql": "16.15 (Ubuntu 16.15-0ubuntu0.24.04.1)",
+    "python": "3.12.13",
+    "seconds": 48.5
+  },
+  "restore_drill": "PASS",
+  "serving_rows": {
+    "category_daily": 3,
+    "delivery_cohorts": 1,
+    "pipeline_health": 7,
+    "sales_daily": 2
+  },
+  "serving_sha256": "7d809e6fde44e8d2368d206f0d6c8a1e9f951aa1f82a0f1b4450905a4dcafc48"
+}

@@ -1,0 +1,57 @@
+{
+  "backup": {
+    "candidate_schemas_excluded": 4,
+    "created_at": "2026-10-12T11:49:04.659696+00:00",
+    "current_release": "8fdb7ac0-8672-47f2-9db7-8d013e87382d",
+    "database": "commerce_real2",
+    "dump_bytes": 97469654,
+    "dump_file": "commerce_real2.dump",
+    "dump_sha256": "5cddd5ff5a35a3d1ca79394c7fe2c6029aadd559f7e4a11cb6056010650c57a1",
+    "generation": 5,
+    "pg_dump_version": "pg_dump (PostgreSQL) 16.15 (Ubuntu 16.15-0ubuntu0.24.04.1)",
+    "restore": "commerce restore-drill --dump <file> --manifest <file> --server-dsn <superuser dsn>",
+    "seconds": 23.1,
+    "served_schema": "cand_9a836a118920450b815c786ca0d0561d",
+    "server_version": "16.15 (Ubuntu 16.15-0ubuntu0.24.04.1)",
+    "serving_checksum": {
+      "code_sha": "7137fa52c7ccaad3d7c9df4fd8a5ebc949798419-dirty-3a2b77b4f2fd",
+      "frontier_end": "2026-02-01T00:00:00+00:00",
+      "generation": 5,
+      "release_id": "8fdb7ac0-8672-47f2-9db7-8d013e87382d",
+      "rows": {
+        "category_daily": 18943,
+        "delivery_cohorts": 556,
+        "pipeline_health": 7,
+        "sales_daily": 634
+      },
+      "sha256": "281cc1ed274c0337596dfc2087b815beb64830d6d845f7a6e2adbc2e14c352b1"
+    },
+    "table_counts": {
+      "bronze.source_events": 451535,
+      "control.file_receipts": 217,
+      "control.publications": 5,
+      "control.quality_results": 45,
+      "control.releases": 5
+    }
+  },
+  "limits": "same machine, no network; dump excludes the 4 non-current candidate schemas; roles were recreated NOLOGIN, passwords are not in a dump",
+  "restore_drill": {
+    "checks": {
+      "blocking_failures_in_current_release": 0,
+      "control_and_bronze_counts_equal": true,
+      "current_release_equal": true,
+      "dashboard_role_cannot_read_bronze": true,
+      "dashboard_role_reads_serving": true,
+      "dump_checksum_matches_manifest": true,
+      "no_writer_holds_the_guard": true,
+      "pg_restore_exit_code": 0,
+      "serving_checksum_equal": true
+    },
+    "note": "Passwords are not in a dump; logins must be bootstrapped again before writers run.",
+    "outcome": "PASS",
+    "restore_seconds": 14.91,
+    "restored_database": "commerce_demo_restore_a10a7734",
+    "total_seconds": 15.31
+  },
+  "what": "Backup and restore drill on the Olist archive release (sandbox PostgreSQL 16.15, local socket)"
+}

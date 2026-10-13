@@ -1,0 +1,87 @@
+{
+ "what": "T04 ingestion of the full Olist baseline replay into PostgreSQL 16.15 (sandbox, 2 vCPU, native, single run, not a benchmark)",
+ "dataset_sha256": "bc76c894b3e9c87ca81767e8d3d7d99cc8761cbaa0e734c2338c8130a5967de7",
+ "replay_version": "baseline-v1",
+ "first_load": {
+  "wall_seconds": 57.4,
+  "runs": [
+   {
+    "accepted_new_rows": 119265,
+    "already_committed_files": 0,
+    "artefact_uri": null,
+    "detail": "",
+    "exact_duplicate_rows": 0,
+    "files": 49,
+    "input_rows": 119265,
+    "intervals_completed": 7,
+    "run_id": "96b1eaea-677d-4665-9547-4e2d06ce3b50",
+    "status": "INGESTED"
+   },
+   {
+    "accepted_new_rows": 97119,
+    "already_committed_files": 0,
+    "artefact_uri": null,
+    "detail": "",
+    "exact_duplicate_rows": 0,
+    "files": 49,
+    "input_rows": 97119,
+    "intervals_completed": 7,
+    "run_id": "baf61d3c-6611-43c6-9c16-104fc90acebf",
+    "status": "INGESTED"
+   },
+   {
+    "accepted_new_rows": 96803,
+    "already_committed_files": 0,
+    "artefact_uri": null,
+    "detail": "",
+    "exact_duplicate_rows": 0,
+    "files": 49,
+    "input_rows": 96803,
+    "intervals_completed": 7,
+    "run_id": "30e81246-ab70-4515-a897-f8ab8d8d84aa",
+    "status": "INGESTED"
+   },
+   {
+    "accepted_new_rows": 97074,
+    "already_committed_files": 0,
+    "artefact_uri": null,
+    "detail": "",
+    "exact_duplicate_rows": 0,
+    "files": 49,
+    "input_rows": 97074,
+    "intervals_completed": 7,
+    "run_id": "56aa5591-60ed-4e1a-ab62-be584d64c9b9",
+    "status": "INGESTED"
+   },
+   {
+    "accepted_new_rows": 41274,
+    "already_committed_files": 0,
+    "artefact_uri": null,
+    "detail": "",
+    "exact_duplicate_rows": 0,
+    "files": 21,
+    "input_rows": 41274,
+    "intervals_completed": 3,
+    "run_id": "ba3388ba-0d60-48c5-ae77-18775c4cbf89",
+    "status": "INGESTED"
+   }
+  ]
+ },
+ "rerun_all_receipts": {
+  "wall_seconds": 14.2,
+  "note": "every file recognised by its receipt; no new rows"
+ },
+ "bronze_rows_by_source": {
+  "category_translation": 71,
+  "customers": 99441,
+  "order_items": 112650,
+  "order_payments": 103886,
+  "orders": 99441,
+  "products": 32951,
+  "sellers": 3095
+ },
+ "receipts": 217,
+ "receipt_input_rows": 451535,
+ "intervals_complete": 31,
+ "bronze_table_size": "322 MB (data + indexes)"
+}

@@ -1,0 +1,360 @@
+{
+  "baseline": {
+    "files": 217,
+    "rows_per_second_end_to_end": 3290,
+    "serial_ranges": [
+      {
+        "intervals": "0-7",
+        "seconds": 26.37,
+        "stages": {
+          "build_candidate": 11.99,
+          "choose_frontier": 0.04,
+          "claim_writer": 0.02,
+          "ingest_source": 22.6,
+          "pipeline_result": 0.0,
+          "prepare_candidate": 0.05,
+          "publish_release": 0.09,
+          "reconcile_ingestion": 0.06,
+          "resolve_manifest": 0.02,
+          "resolve_run": 0.0,
+          "validate_candidate": 0.28,
+          "verify_manifest": 1.71,
+          "verify_serving": 0.07
+        },
+        "status": "SUCCEEDED"
+      },
+      {
+        "intervals": "7-14",
+        "seconds": 24.36,
+        "stages": {
+          "build_candidate": 13.16,
+          "choose_frontier": 0.03,
+          "claim_writer": 0.02,
+          "ingest_source": 16.08,
+          "pipeline_result": 0.0,
+          "prepare_candidate": 0.05,
+          "publish_release": 0.05,
+          "reconcile_ingestion": 0.05,
+          "resolve_manifest": 0.02,
+          "resolve_run": 0.0,
+          "validate_candidate": 0.61,
+          "verify_manifest": 1.65,
+          "verify_serving": 0.07
+        },
+        "status": "SUCCEEDED"
+      },
+      {
+        "intervals": "14-21",
+        "seconds": 28.08,
+        "stages": {
+          "build_candidate": 15.27,
+          "choose_frontier": 0.03,
+          "claim_writer": 0.02,
+          "ingest_source": 18.96,
+          "pipeline_result": 0.0,
+          "prepare_candidate": 0.06,
+          "publish_release": 0.06,
+          "reconcile_ingestion": 0.05,
+          "resolve_manifest": 0.02,
+          "resolve_run": 0.0,
+          "validate_candidate": 0.9,
+          "verify_manifest": 1.56,
+          "verify_serving": 0.08
+        },
+        "status": "SUCCEEDED"
+      },
+      {
+        "intervals": "21-28",
+        "seconds": 32.17,
+        "stages": {
+          "build_candidate": 18.95,
+          "choose_frontier": 0.03,
+          "claim_writer": 0.02,
+          "ingest_source": 18.67,
+          "pipeline_result": 0.0,
+          "prepare_candidate": 0.05,
+          "publish_release": 0.04,
+          "reconcile_ingestion": 0.06,
+          "resolve_manifest": 0.02,
+          "resolve_run": 0.0,
+          "validate_candidate": 1.19,
+          "verify_manifest": 1.55,
+          "verify_serving": 0.1
+        },
+        "status": "SUCCEEDED"
+      },
+      {
+        "intervals": "28-31",
+        "seconds": 26.19,
+        "stages": {
+          "build_candidate": 17.94,
+          "choose_frontier": 0.05,
+          "claim_writer": 0.02,
+          "ingest_source": 10.61,
+          "pipeline_result": 0.0,
+          "prepare_candidate": 0.05,
+          "publish_release": 0.04,
+          "reconcile_ingestion": 0.04,
+          "resolve_manifest": 0.02,
+          "resolve_run": 0.0,
+          "validate_candidate": 1.31,
+          "verify_manifest": 0.68,
+          "verify_serving": 0.09
+        },
+        "status": "SUCCEEDED"
+      }
+    ],
+    "serving_checksum": {
+      "code_sha": "7b7591bdf00afec835e902c9ca5fd9dea7451c13-dirty-315dccc7b96b",
+      "frontier_end": "2026-02-01T00:00:00+00:00",
+      "generation": 5,
+      "release_id": "4143e8c7-903a-46c7-879f-7e2fc3da8316",
+      "rows": {
+        "category_daily": 18943,
+        "delivery_cohorts": 556,
+        "pipeline_health": 7,
+        "sales_daily": 634
+      },
+      "sha256": "281cc1ed274c0337596dfc2087b815beb64830d6d845f7a6e2adbc2e14c352b1"
+    },
+    "sizes": {
+      "bronze_events": 451535,
+      "bronze_events_bytes": 335388672,
+      "candidate_schemas_retained": 5,
+      "database_bytes": 885660695,
+      "served_candidate_bytes": 162430976
+    },
+    "source_rows": 451535,
+    "wall_seconds": 137.2
+  },
+  "daily_replay": {
+    "cold_start_seconds": 11.83,
+    "input_rows_per_day": {
+      "max": 36117.0,
+      "median": 13861.5,
+      "min": 13743.0,
+      "n": 30,
+      "p95": 13937.0
+    },
+    "note": "run 1 is the cold start (empty database, first dbt build); statistics use runs 2..n; each day's build is complete over all data so far, so later days cost more",
+    "runs": 30,
+    "stage_seconds_warm": {
+      "build_candidate": {
+        "max": 19.812,
+        "median": 15.045,
+        "min": 8.696,
+        "n": 29,
+        "p95": 19.398
+      },
+      "choose_frontier": {
+        "max": 0.117,
+        "median": 0.033,
+        "min": 0.026,
+        "n": 29,
+        "p95": 0.108
+      },
+      "claim_writer": {
+        "max": 0.021,
+        "median": 0.018,
+        "min": 0.014,
+        "n": 29,
+        "p95": 0.02
+      },
+      "ingest_source": {
+        "max": 4.276,
+        "median": 3.404,
+        "min": 2.331,
+        "n": 29,
+        "p95": 4.189
+      },
+      "pipeline_result": {
+        "max": 0.006,
+        "median": 0.003,
+        "min": 0.002,
+        "n": 29,
+        "p95": 0.004
+      },
+      "prepare_candidate": {
+        "max": 0.061,
+        "median": 0.047,
+        "min": 0.035,
+        "n": 29,
+        "p95": 0.061
+      },
+      "publish_release": {
+        "max": 0.068,
+        "median": 0.048,
+        "min": 0.039,
+        "n": 29,
+        "p95": 0.062
+      },
+      "reconcile_ingestion": {
+        "max": 0.045,
+        "median": 0.036,
+        "min": 0.031,
+        "n": 29,
+        "p95": 0.043
+      },
+      "resolve_manifest": {
+        "max": 0.03,
+        "median": 0.017,
+        "min": 0.015,
+        "n": 29,
+        "p95": 0.025
+      },
+      "resolve_run": {
+        "max": 0.007,
+        "median": 0.003,
+        "min": 0.002,
+        "n": 29,
+        "p95": 0.006
+      },
+      "validate_candidate": {
+        "max": 1.341,
+        "median": 0.58,
+        "min": 0.103,
+        "n": 29,
+        "p95": 1.269
+      },
+      "verify_manifest": {
+        "max": 0.317,
+        "median": 0.214,
+        "min": 0.192,
+        "n": 29,
+        "p95": 0.302
+      },
+      "verify_serving": {
+        "max": 0.129,
+        "median": 0.085,
+        "min": 0.048,
+        "n": 29,
+        "p95": 0.114
+      }
+    },
+    "warm_run_seconds": {
+      "max": 24.429,
+      "median": 18.548,
+      "min": 10.995,
+      "n": 29,
+      "p95": 24.065
+    }
+  },
+  "daily_sizes": {
+    "bronze_events": 451535,
+    "bronze_events_bytes": 340107264,
+    "candidate_schemas_retained": 31,
+    "database_bytes": 3040467991,
+    "served_candidate_bytes": 162553856
+  },
+  "duplicate_replay": {
+    "checksum_unchanged": true,
+    "new_bronze_events": 0,
+    "new_receipts": 0,
+    "seconds": 1.44,
+    "status": "NO_CHANGE"
+  },
+  "environment": {
+    "cpus": 2,
+    "dataset_sha256": "bc76c894b3e9c87ca81767e8d3d7d99cc8761cbaa0e734c2338c8130a5967de7",
+    "machine": "x86_64",
+    "memory_gb": 7.8,
+    "note": "database and application on the same machine; nothing else tuned",
+    "platform": "Linux-6.18.44-fc-v114-x86_64-with-glibc2.39",
+    "postgresql": "16.15 (Ubuntu 16.15-0ubuntu0.24.04.1)",
+    "python": "3.12.13",
+    "raw_store_bytes": 27637869
+  },
+  "equality_daily_vs_baseline": {
+    "baseline_canonical_sha256": "c4541bfb70048d74d5094e200eedc21dd151eec53fdd7d8d35e1c3f85a52f60d",
+    "canonical_sha256_equal": true,
+    "daily_canonical_sha256": "c4541bfb70048d74d5094e200eedc21dd151eec53fdd7d8d35e1c3f85a52f60d",
+    "serving_checksum_equal": true,
+    "tables": {
+      "dim_customers": 99441,
+      "dim_date": 774,
+      "dim_products": 32951,
+      "dim_sellers": 3095,
+      "fct_order_items": 112650,
+      "fct_orders": 99441,
+      "fct_payments": 103886,
+      "mart_category_daily": 18943,
+      "mart_delivery_cohorts": 556,
+      "mart_pipeline_health": 7,
+      "mart_sales_daily": 634
+    }
+  },
+  "intervals_in_replay": 31,
+  "peak_memory_mb": {
+    "application_tree_peak_pss": 234.4,
+    "method": "sum of Pss over the process tree, sampled every 0.25 s; includes dbt subprocesses",
+    "postgresql_peak_pss": 394.9
+  },
+  "queries": [
+    {
+      "execution_ms_median": 0.127,
+      "node": "Seq Scan",
+      "planning_ms_median": 0.028,
+      "query": "sales_daily full view",
+      "rows": 634,
+      "samples": 5,
+      "shared_hit_blocks": 16
+    },
+    {
+      "execution_ms_median": 0.083,
+      "node": "Seq Scan",
+      "planning_ms_median": 0.034,
+      "query": "sales_daily one quarter",
+      "rows": 92,
+      "samples": 5,
+      "shared_hit_blocks": 16
+    },
+    {
+      "execution_ms_median": 3.148,
+      "node": "Seq Scan",
+      "planning_ms_median": 0.031,
+      "query": "category_daily full view",
+      "rows": 18943,
+      "samples": 5,
+      "shared_hit_blocks": 256
+    },
+    {
+      "execution_ms_median": 1.994,
+      "node": "Aggregate",
+      "planning_ms_median": 0.049,
+      "query": "category ranking, one category",
+      "rows": 1,
+      "samples": 5,
+      "shared_hit_blocks": 256
+    },
+    {
+      "execution_ms_median": 0.096,
+      "node": "Seq Scan",
+      "planning_ms_median": 0.039,
+      "query": "delivery_cohorts full view",
+      "rows": 556,
+      "samples": 5,
+      "shared_hit_blocks": 8
+    },
+    {
+      "execution_ms_median": 0.007,
+      "node": "Seq Scan",
+      "planning_ms_median": 0.016,
+      "query": "pipeline_health full view",
+      "rows": 7,
+      "samples": 5,
+      "shared_hit_blocks": 1
+    }
+  ],
+  "recovery": {
+    "failed_run_seconds": 26.39,
+    "failed_run_status": "FAILED_TRANSIENT",
+    "fault_to_restored_seconds": 28.19,
+    "resume_seconds": 1.59,
+    "resume_status": "SUCCEEDED",
+    "scenario": "publication transaction aborted before commit on the last interval, same run resumed",
+    "serving_changed_after_resume": true,
+    "serving_unchanged_while_failed": true
+  },
+  "total_wall_seconds": 717.3,
+  "what": "Blueprint \u00a733 local experiments"
+}

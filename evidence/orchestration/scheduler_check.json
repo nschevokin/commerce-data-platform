@@ -1,0 +1,35 @@
+{
+  "airflow": "3.3.2",
+  "checks": {
+    "scheduled_run_outside_calendar": {
+      "runs": [
+        "failed"
+      ],
+      "resolve_run_tries": [
+        1
+      ]
+    },
+    "clean_run": {
+      "dag_run_id": "manual__2026-10-12T12:59:39.452283+00:00",
+      "state": "success",
+      "task_states": [
+        "success"
+      ],
+      "tasks": 20,
+      "published_releases": 1,
+      "ingest_max_concurrent": 2,
+      "ingest_pool_slots": 2,
+      "build_max_concurrent": 1,
+      "max_try_number": 1
+    },
+    "transient_fault_retry": {
+      "dag_run_id": "manual__2026-10-12T13:00:12.649084+00:00",
+      "first_failing_task": "resolve_run",
+      "state": "success",
+      "failed_task_final_try_number": 2,
+      "published_releases_total": 2
+    }
+  },
+  "pass": true,
+  "process_logs": "removed"
+}

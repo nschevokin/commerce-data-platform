@@ -1,0 +1,2 @@
+lock_first=False: {'release_info': 'B', 'biz': 2, 'health': 'A'}
+lock_first=True: {'release_info': 'B', 'biz': 2, 'health': 'B'}

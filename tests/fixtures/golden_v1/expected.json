@@ -1,0 +1,99 @@
+{
+  "_comment": "Hand-calculated from the CSVs in this directory (see docs/golden_fixture.md). Do not regenerate from code: this file is the independent oracle.",
+  "fixture_version": "golden_v1",
+  "baseline": {
+    "row_counts": {
+      "orders": 3, "customers": 3, "order_items": 4, "order_payments": 4,
+      "products": 3, "sellers": 2, "category_translation": 2
+    },
+    "all_status": {
+      "orders": 3,
+      "merchandise_value_brl": "150.00",
+      "freight_value_brl": "15.00",
+      "recorded_payment_brl": "165.00"
+    },
+    "eligible": {
+      "eligible_orders": 2,
+      "excluded_orders": 1,
+      "eligible_orders_with_items": 2,
+      "merchandise_value_brl": "130.00",
+      "freight_value_brl": "13.00",
+      "recorded_payment_brl": "143.00",
+      "average_order_value_brl": "65.00"
+    },
+    "orders": {
+      "fx0000000000000000000000000order_a": {
+        "status": "delivered", "is_eligible": true, "purchase_date": "2017-03-10",
+        "item_count": 2, "payment_row_count": 2,
+        "merchandise_value_brl": "100.00", "freight_value_brl": "10.00",
+        "item_total_brl": "110.00", "recorded_payment_brl": "110.00",
+        "payment_difference_brl": "0.00",
+        "has_items": true, "has_payments": true, "has_customer": true,
+        "has_delivery_actual": true, "has_delivery_estimate": true,
+        "is_on_time": true, "delivery_lead_time_seconds": 589200
+      },
+      "fx0000000000000000000000000order_b": {
+        "status": "delivered", "is_eligible": true, "purchase_date": "2017-03-11",
+        "item_count": 1, "payment_row_count": 1,
+        "merchandise_value_brl": "30.00", "freight_value_brl": "3.00",
+        "item_total_brl": "33.00", "recorded_payment_brl": "33.00",
+        "payment_difference_brl": "0.00",
+        "has_items": true, "has_payments": true, "has_customer": true,
+        "has_delivery_actual": true, "has_delivery_estimate": true,
+        "is_on_time": false, "delivery_lead_time_seconds": 1666500
+      },
+      "fx0000000000000000000000000order_c": {
+        "status": "canceled", "is_eligible": false, "purchase_date": "2017-03-11",
+        "item_count": 1, "payment_row_count": 1,
+        "merchandise_value_brl": "20.00", "freight_value_brl": "2.00",
+        "item_total_brl": "22.00", "recorded_payment_brl": "22.00",
+        "payment_difference_brl": "0.00",
+        "has_items": true, "has_payments": true, "has_customer": true,
+        "has_delivery_actual": false, "has_delivery_estimate": true,
+        "is_on_time": null, "delivery_lead_time_seconds": null
+      }
+    },
+    "sales_daily": {
+      "2017-03-10": {
+        "eligible_orders": 1, "excluded_orders": 0,
+        "merchandise_value_brl": "100.00", "freight_value_brl": "10.00",
+        "recorded_payment_brl": "110.00", "average_order_value_brl": "100.00"
+      },
+      "2017-03-11": {
+        "eligible_orders": 1, "excluded_orders": 1,
+        "merchandise_value_brl": "30.00", "freight_value_brl": "3.00",
+        "recorded_payment_brl": "33.00", "average_order_value_brl": "30.00"
+      }
+    },
+    "delivery": {
+      "delivered_orders": 2,
+      "delivered_with_both_dates": 2,
+      "on_time_orders": 1,
+      "on_time_rate": "0.500000"
+    },
+    "category": {
+      "health_beauty": {"item_rows": 1, "distinct_orders": 1, "merchandise_value_brl": "60.00", "freight_value_brl": "5.00", "mapping_missing": false},
+      "pc_gamer":      {"item_rows": 1, "distinct_orders": 1, "merchandise_value_brl": "40.00", "freight_value_brl": "5.00", "mapping_missing": true},
+      "(unknown)":     {"item_rows": 1, "distinct_orders": 1, "merchandise_value_brl": "30.00", "freight_value_brl": "3.00", "mapping_missing": true}
+    },
+    "dimensions": {
+      "customer_postal_prefix": {"fx00000000000000000000000000cust_a": "01310"},
+      "seller_postal_prefix": {"fx0000000000000000000000000seller_2": "04567"},
+      "seller_state": {"fx0000000000000000000000000seller_2": "SP"},
+      "distinct_customer_unique_ids": 2
+    }
+  },
+  "scenarios_for_later_tickets": {
+    "_comment": "Exercised from T04 (bronze) / T08 (replay). Recorded now so the oracle is fixed before the code.",
+    "A_repeated_identically": {"eligible_orders": 2, "merchandise_value_brl": "130.00", "recorded_payment_brl": "143.00", "accepted_new_events": 0},
+    "B_late_two_replay_days": {
+      "_note": "Corrected in T05. The first draft assumed canceled order C was already visible while B was missing. In the deterministic replay C arrives on replay day 21, after B (day 11, late: day 13), so before B arrives only A is visible and the 2017-03-11 purchase date does not exist yet. The property is unchanged: older purchase-date totals change when B becomes available.",
+      "before_B_available": {"eligible_orders": 1, "excluded_orders": 0, "merchandise_value_brl": "100.00", "freight_value_brl": "10.00", "recorded_payment_brl": "110.00", "purchase_dates": ["2017-03-10"]},
+      "after_B_available": {"2017-03-11": {"eligible_orders": 1, "excluded_orders": 0, "merchandise_value_brl": "30.00"}, "eligible_total_merchandise_brl": "130.00", "purchase_dates": ["2017-03-10", "2017-03-11"]}
+    },
+    "B_revision_2": {
+      "item_price_brl": "35.00", "item_freight_brl": "3.00", "payment_value_brl": "38.00",
+      "eligible": {"eligible_orders": 2, "merchandise_value_brl": "135.00", "freight_value_brl": "13.00", "recorded_payment_brl": "148.00", "average_order_value_brl": "67.50"}
+    }
+  }
+}

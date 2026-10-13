@@ -1,0 +1,36 @@
+name: commerce
+version: "0.1.0"
+config-version: 2
+profile: commerce
+
+model-paths: ["models"]
+seed-paths: ["seeds"]
+test-paths: ["tests"]
+macro-paths: ["macros"]
+clean-targets: ["target"]
+
+vars:
+  source_mode: fixture
+  source_schema: null
+  replay_version: null
+  frontier_end: null
+  release_id: null
+  candidate_schema: null
+  run_id: null
+  exact_fixture: false
+
+models:
+  commerce:
+    +materialized: table
+    bronze:
+      +materialized: table
+    staging:
+      +materialized: view
+seeds:
+  commerce:
+    +quote_columns: false
+    order_status_contract:
+      +column_types:
+        order_status: text
+        is_eligible: boolean
+        contract_version: integer

@@ -1,0 +1,4 @@
+"product_id","product_category_name","product_name_lenght","product_description_lenght","product_photos_qty","product_weight_g","product_length_cm","product_height_cm","product_width_cm"
+"fx00000000000000000000000000prod_1","beleza_saude",40,287,1,225,16,10,14
+"fx00000000000000000000000000prod_2","pc_gamer",52,1100,3,1800,40,12,30
+"fx00000000000000000000000000prod_3",,,,,300,20,5,15

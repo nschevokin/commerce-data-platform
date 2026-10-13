@@ -1,0 +1,2 @@
+apache-airflow[postgres]==3.3.2
+psycopg[binary]>=3.3.5,<3.4

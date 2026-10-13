@@ -1,0 +1,12 @@
+version: 2
+sources:
+  - name: raw
+    schema: "{{ var('source_schema') }}"
+    tables:
+      - name: orders
+      - name: customers
+      - name: order_items
+      - name: order_payments
+      - name: products
+      - name: sellers
+      - name: category_translation

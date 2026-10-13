@@ -1,0 +1,13 @@
+commerce:
+  target: candidate
+  outputs:
+    candidate:
+      type: postgres
+      host: "{{ env_var('COMMERCE_WAREHOUSE_HOST', '127.0.0.1') }}"
+      port: "{{ env_var('COMMERCE_WAREHOUSE_PORT', '5432') | int }}"
+      dbname: "{{ env_var('COMMERCE_WAREHOUSE_DB', 'commerce') }}"
+      user: "{{ env_var('COMMERCE_TRANSFORM_USER', 'commerce_transform') }}"
+      password: "{{ env_var('COMMERCE_TRANSFORM_PASSWORD') }}"
+      schema: "{{ var('candidate_schema') }}"
+      threads: 2
+      connect_timeout: 10

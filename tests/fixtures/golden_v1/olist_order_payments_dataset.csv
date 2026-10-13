@@ -1,0 +1,5 @@
+"order_id","payment_sequential","payment_type","payment_installments","payment_value"
+"fx0000000000000000000000000order_a",1,"credit_card",3,70.00
+"fx0000000000000000000000000order_a",2,"voucher",1,40.00
+"fx0000000000000000000000000order_b",1,"boleto",1,33.00
+"fx0000000000000000000000000order_c",1,"credit_card",1,22.00

@@ -1,0 +1,9 @@
+order_status,is_eligible,contract_version
+created,true,1
+approved,true,1
+invoiced,true,1
+processing,true,1
+shipped,true,1
+delivered,true,1
+canceled,false,1
+unavailable,false,1

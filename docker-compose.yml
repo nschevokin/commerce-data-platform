@@ -1,0 +1,154 @@
+name: commerce
+
+x-pg-health: &pg-health
+  interval: 5s
+  timeout: 5s
+  retries: 20
+
+services:
+  warehouse-db:
+    image: postgres:16-bookworm
+    environment:
+      POSTGRES_DB: commerce
+      POSTGRES_USER: commerce_admin
+      POSTGRES_PASSWORD_FILE: /run/secrets/warehouse_admin_password
+    secrets: [warehouse_admin_password]
+    volumes: [warehouse-data:/var/lib/postgresql/data]
+    ports: ["127.0.0.1:${WAREHOUSE_PORT:-5432}:5432"]   # loopback only
+    healthcheck:
+      <<: *pg-health
+      test: ["CMD-SHELL", "pg_isready -U commerce_admin -d commerce"]
+    networks: [warehouse]
+
+  airflow-db:
+    image: postgres:16-bookworm
+    environment:
+      POSTGRES_DB: airflow
+      POSTGRES_USER: airflow
+      POSTGRES_PASSWORD_FILE: /run/secrets/airflow_db_password
+    secrets: [airflow_db_password]
+    volumes: [airflow-db-data:/var/lib/postgresql/data]
+    healthcheck:
+      <<: *pg-health
+      test: ["CMD-SHELL", "pg_isready -U airflow -d airflow"]
+    networks: [airflow]
+
+  migrate:
+    build: {context: ., dockerfile: docker/app.Dockerfile}
+    depends_on:
+      warehouse-db: {condition: service_healthy}
+    environment:
+      COMMERCE_ADMIN_DSN_FILE: /run/secrets/warehouse_admin_dsn
+      COMMERCE_INGEST_PASSWORD_FILE: /run/secrets/commerce_ingest_password
+      COMMERCE_TRANSFORM_PASSWORD_FILE: /run/secrets/commerce_transform_password
+      COMMERCE_PUBLISH_PASSWORD_FILE: /run/secrets/commerce_publish_password
+      COMMERCE_DASHBOARD_PASSWORD_FILE: /run/secrets/commerce_dashboard_password
+    secrets: [warehouse_admin_dsn, commerce_ingest_password, commerce_transform_password,
+              commerce_publish_password, commerce_dashboard_password]
+    command: ["sh", "-c", "commerce migrate && commerce bootstrap-roles"]
+    restart: "no"
+    networks: [warehouse]
+
+  airflow-init:
+    profiles: [airflow]
+    build: &airflow-build {context: ., dockerfile: docker/airflow/Dockerfile}
+    depends_on:
+      airflow-db: {condition: service_healthy}
+      migrate: {condition: service_completed_successfully}
+    environment: &airflow-env
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__CORE__LOAD_EXAMPLES: "false"
+      AIRFLOW__CORE__DAGS_FOLDER: /opt/airflow/dags
+      AIRFLOW__CORE__EXECUTION_API_SERVER_URL: http://airflow-api-server:8080/execution/
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN_CMD: "sh -c 'printf %s postgresql+psycopg2://airflow:$$(cat /run/secrets/airflow_db_password)@airflow-db/airflow'"
+      AIRFLOW__CORE__FERNET_KEY_CMD: "sh -c 'printf %s \"$$(cat /run/secrets/airflow_fernet_key)\"'"
+      AIRFLOW__API_AUTH__JWT_SECRET_CMD: "sh -c 'printf %s \"$$(cat /run/secrets/airflow_jwt_secret)\"'"
+      AIRFLOW__API__SECRET_KEY_CMD: "sh -c 'printf %s \"$$(cat /run/secrets/airflow_jwt_secret)\"'"
+      COMMERCE_STORE: /data/store
+      COMMERCE_ARTIFACTS: /data/artifacts
+      COMMERCE_DATASET_SHA256: ${COMMERCE_DATASET_SHA256:-}
+      COMMERCE_REPLAY_VERSION: ${COMMERCE_REPLAY_VERSION:-baseline-v1}
+      COMMERCE_WAREHOUSE_HOST: warehouse-db
+      COMMERCE_WAREHOUSE_PORT: "5432"
+      COMMERCE_WAREHOUSE_DB: commerce
+      COMMERCE_INGEST_PASSWORD_FILE: /run/secrets/commerce_ingest_password
+      COMMERCE_TRANSFORM_PASSWORD_FILE: /run/secrets/commerce_transform_password
+      COMMERCE_PUBLISH_PASSWORD_FILE: /run/secrets/commerce_publish_password
+      COMMERCE_DASHBOARD_PASSWORD_FILE: /run/secrets/commerce_dashboard_password
+    secrets: &airflow-secrets [airflow_db_password, airflow_fernet_key, airflow_jwt_secret,
+              commerce_ingest_password, commerce_transform_password, commerce_publish_password,
+              commerce_dashboard_password]
+    volumes: &airflow-volumes ["./data/store:/data/store", "artifacts:/data/artifacts"]
+    command: ["bash", "-c", "airflow db migrate && airflow pools set commerce_ingest 2 'bounded ingestion' && airflow pools set commerce_transform 1 'one build at a time'"]
+    restart: "no"
+    networks: [airflow, warehouse]
+
+  airflow-api-server:
+    profiles: [airflow]
+    build: *airflow-build
+    depends_on: {airflow-init: {condition: service_completed_successfully}}
+    environment: *airflow-env
+    secrets: *airflow-secrets
+    volumes: *airflow-volumes
+    command: ["airflow", "api-server"]
+    ports: ["127.0.0.1:8080:8080"]            # loopback only
+    networks: [airflow, warehouse]
+
+  airflow-scheduler:
+    profiles: [airflow]
+    build: *airflow-build
+    depends_on: {airflow-init: {condition: service_completed_successfully}}
+    environment: *airflow-env
+    secrets: *airflow-secrets
+    volumes: *airflow-volumes
+    command: ["airflow", "scheduler"]
+    networks: [airflow, warehouse]
+
+  airflow-dag-processor:
+    profiles: [airflow]
+    build: *airflow-build
+    depends_on: {airflow-init: {condition: service_completed_successfully}}
+    environment: *airflow-env
+    secrets: *airflow-secrets
+    volumes: *airflow-volumes
+    command: ["airflow", "dag-processor"]
+    networks: [airflow, warehouse]
+
+  dashboard:
+    profiles: [dashboard]
+    build: {context: ., dockerfile: docker/dashboard/Dockerfile}
+    depends_on:
+      migrate: {condition: service_completed_successfully}
+    environment:
+      COMMERCE_WAREHOUSE_HOST: warehouse-db
+      COMMERCE_DASHBOARD_PASSWORD_FILE: /run/secrets/commerce_dashboard_password
+    secrets: [commerce_dashboard_password]
+    ports: ["127.0.0.1:8501:8501"]      # loopback only: no public ingress (blueprint §33)
+    read_only: true
+    tmpfs: [/tmp, /home/viewer/.streamlit]
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request as u; u.urlopen('http://127.0.0.1:8501/_stcore/health')"]
+      interval: 10s
+      timeout: 5s
+      retries: 6
+    networks: [warehouse]
+
+secrets:
+  airflow_fernet_key:          {file: ./secrets/airflow_fernet_key}
+  airflow_jwt_secret:          {file: ./secrets/airflow_jwt_secret}
+  warehouse_admin_password:    {file: ./secrets/warehouse_admin_password}
+  warehouse_admin_dsn:         {file: ./secrets/warehouse_admin_dsn}
+  airflow_db_password:         {file: ./secrets/airflow_db_password}
+  commerce_ingest_password:    {file: ./secrets/commerce_ingest_password}
+  commerce_transform_password: {file: ./secrets/commerce_transform_password}
+  commerce_publish_password:   {file: ./secrets/commerce_publish_password}
+  commerce_dashboard_password: {file: ./secrets/commerce_dashboard_password}
+
+volumes:
+  warehouse-data:
+  airflow-db-data:
+  artifacts:
+
+networks:
+  warehouse:
+  airflow:

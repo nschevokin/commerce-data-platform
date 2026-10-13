@@ -1,0 +1,50 @@
+[project]
+name = "commerce-data-platform"
+version = "0.1.0"
+description = "Reproducible e-commerce analytics platform: immutable inputs, idempotent ingestion, gated atomic publication."
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "psycopg[binary]>=3.3.5,<3.4",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8,<9",
+    "ruff>=0.6",
+]
+
+[project.scripts]
+commerce = "commerce.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/commerce"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["tests/unit"]
+markers = [
+    "integration: requires a running PostgreSQL (COMMERCE_ADMIN_DSN)",
+    "dbt: requires the isolated dbt environment (envs/dbt/.venv)",
+    "airflow: requires the locked Airflow environment (make airflow-env)",
+    "dashboard: requires the dashboard environment (make dashboard-env)",
+]
+
+[tool.ruff]
+line-length = 112
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+
+[tool.ruff.lint.per-file-ignores]
+"src/commerce/replay/profile.py" = ["E501"]   # dense one-line metric definitions
+"src/commerce/recovery/matrix.py" = ["E501"]   # case narratives and evidence strings read better unwrapped
+"scripts/airflow_scheduler_check.py" = ["E501"]   # diagnostic harness
+
+[tool.uv]
+constraint-dependencies = ["psycopg==3.3.5", "psycopg-binary==3.3.5"]

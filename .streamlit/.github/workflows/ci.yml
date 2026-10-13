@@ -1,0 +1,27 @@
+name: ci
+on: [push, pull_request]
+jobs:
+  checks:
+    runs-on: ubuntu-24.04
+    services:
+      postgres:
+        image: postgres:16-bookworm
+        env: {POSTGRES_USER: postgres, POSTGRES_PASSWORD: ci-only-password}
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U postgres" --health-interval 5s --health-timeout 5s --health-retries 20
+    env:
+      COMMERCE_TEST_SERVER_DSN: host=127.0.0.1 port=5432 user=postgres password=ci-only-password
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with: {version: "0.11.32"}
+      - run: make setup
+      - run: make lint
+      - run: make test-unit
+      - run: make dashboard-env
+      - run: make test-dashboard
+      - run: make test
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: {name: dbt-artifacts, path: artifacts/, if-no-files-found: ignore}

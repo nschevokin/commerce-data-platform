@@ -1,5 +1,5 @@
 # Commerce Data Platform
-
+[![ci](https://github.com/nschevokin/commerce-data-platform/actions/workflows/ci.yml/badge.svg)](https://github.com/nschevokin/commerce-data-platform/actions/workflows/ci.yml)
 A batch analytics platform whose metrics stay correct under repeated, late, corrected and failed deliveries.
 
 ## Problem

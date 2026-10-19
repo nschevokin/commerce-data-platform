@@ -1,8 +1,8 @@
 # Temporary AWS demonstration: cost plan for approval (T10, blueprint §31 and §33)
 
 **Status: NOT PURSUED (2026-10-12): the owner has no AWS account and chose a free alternative (D-066). Kept as the costed option if a real cloud run is wanted later. Originally: PROPOSED. No AWS resource exists and none will be created until the owner approves this plan in
-writing and supplies an account.** I (Claude) cannot create resources: I have no AWS credentials and will
-not be given any. The owner runs each step; I supply the infrastructure definition, commands and checks.
+writing and supplies an account.** No resource can be created without the owner's AWS credentials, which are not supplied to the build tooling.
+The owner runs each step; the repository supplies the infrastructure definition, commands and checks.
 
 ## What it proves
 
@@ -41,7 +41,7 @@ list prices, not a quote; actual prices and the final instance size are recorded
 5. **Local first.** Nothing is deployed until the local benchmark, the local backup/restore drill and the
    measured container memory exist. The instance size follows from those numbers.
 
-## What I need from the owner to proceed
+## What is needed from the owner to proceed
 
 - A yes or no to this plan, and any change to the ceiling or lifetime.
 - An AWS account whose root user has MFA, and an IAM identity (not the root user) with rights to create the

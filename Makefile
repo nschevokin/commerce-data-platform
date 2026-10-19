@@ -93,5 +93,3 @@ import-data:  ## inventory+profile the Olist zip: make import-data ARCHIVE=... R
 replay:  ## baseline replay of SOURCE (zip or dir; default: the fixture) into data/store
 	.venv/bin/commerce replay baseline --source $${SOURCE:-tests/fixtures/golden_v1} --store data/store
 
-demo verify evidence:  ## planned (blueprint §30), not implemented yet
-	@echo "'$@' is planned for a later ticket (see PROGRESS.md)"; exit 3
